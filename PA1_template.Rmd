@@ -3,9 +3,10 @@ title: "Reproducible Research: Peer Assessment 1"
 author: "skewdlogix"
 date: "April 22, 2017"
 output: html_document
+keep_md: true
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
