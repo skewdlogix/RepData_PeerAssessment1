@@ -1,10 +1,8 @@
 ---
 title: "Reproducible Research: Peer Assessment 1"
 author: "skewdlogix"
-date: "April 20, 2017"
-output:
-    html_document:
-        keep_md: true
+date: "April 22, 2017"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
@@ -186,17 +184,5 @@ head(average_steps_adj)
 
 with(average_steps_adj, xyplot(average_steps ~ interval | DayofWeek, type="l", lwd= 1, layout= c(1, 2), col= "red", main= "Average Number of Steps Taken By 5 Minute Interval", ylab="Average Number of Steps Taken", xlab= "5 Minute Interval"))
 ```
-
-
-
-
-
-
-
-
-
-
-
-
 
 
