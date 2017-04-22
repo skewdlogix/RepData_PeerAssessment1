@@ -1,6 +1,9 @@
-# Reproducible Research: Peer Assessment 1
-skewdlogix  
-April 20, 2017  
+---
+title: "Reproducible Research: Peer Assessment 1"
+author: "skewdlogix"
+date: "April 22, 2017"
+output: html_document
+---
 
 
 
@@ -90,23 +93,18 @@ For this part of the assignment, you can ignore the missing values in the datase
 
 ```r
 total_steps <- activity %>% group_by(date) %>% summarize(steps = sum(steps, na.rm= TRUE))
+```
+
+```
+## Error in summarize(., steps = sum(steps, na.rm = TRUE)): argument "by" is missing, with no default
+```
+
+```r
 head(total_steps, n= 10)
 ```
 
 ```
-## # A tibble: 10 × 2
-##          date steps
-##        <date> <int>
-## 1  2012-10-01     0
-## 2  2012-10-02   126
-## 3  2012-10-03 11352
-## 4  2012-10-04 12116
-## 5  2012-10-05 13294
-## 6  2012-10-06 15420
-## 7  2012-10-07 11015
-## 8  2012-10-08     0
-## 9  2012-10-09 12811
-## 10 2012-10-10  9900
+## Error in head(total_steps, n = 10): object 'total_steps' not found
 ```
 
 #### Create a histogram of the total number of steps taken each day
@@ -116,7 +114,9 @@ head(total_steps, n= 10)
 hist(total_steps$steps, breaks=50, main= "Total Number of Steps Taken Each Day", xlab= "Total Steps per Day", ylab= "Number of Days", col= "red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+```
+## Error in hist(total_steps$steps, breaks = 50, main = "Total Number of Steps Taken Each Day", : object 'total_steps' not found
+```
 
 #### Calculate the mean and median of the total number of steps taken each day
 
@@ -127,7 +127,7 @@ mean(total_steps$steps)
 ```
 
 ```
-## [1] 9354.23
+## Error in mean(total_steps$steps): object 'total_steps' not found
 ```
 
 The median of the total number of steps taken per day is
@@ -137,7 +137,7 @@ median(total_steps$steps)
 ```
 
 ```
-## [1] 10395
+## Error in median(total_steps$steps): object 'total_steps' not found
 ```
 
 ## What is the average daily activity pattern?
@@ -149,26 +149,27 @@ Make a time series plot of the 5-minute interval (x-axis) and the average number
 
 ```r
 average_steps <- activity %>% group_by(interval) %>% summarize(average_steps = mean(steps, na.rm= TRUE))
+```
+
+```
+## Error in summarize(., average_steps = mean(steps, na.rm = TRUE)): argument "by" is missing, with no default
+```
+
+```r
 head(average_steps)
 ```
 
 ```
-## # A tibble: 6 × 2
-##   interval average_steps
-##      <int>         <dbl>
-## 1        0     1.7169811
-## 2        5     0.3396226
-## 3       10     0.1320755
-## 4       15     0.1509434
-## 5       20     0.0754717
-## 6       25     2.0943396
+## Error in head(average_steps): object 'average_steps' not found
 ```
 
 ```r
 with(average_steps, plot(average_steps ~ interval, type="l", lwd= 1, col= "red", main= "Average Number of Steps Taken By 5 Minute Interval", ylab="Average Number of Steps Taken", xlab= "5 Minute Interval"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+```
+## Error in with(average_steps, plot(average_steps ~ interval, type = "l", : object 'average_steps' not found
+```
 
 #### 5 Minute Interval Calculations
 
@@ -181,7 +182,7 @@ average_steps$interval[which.max(average_steps$average_steps)]
 ```
 
 ```
-## [1] 835
+## Error in eval(expr, envir, enclos): object 'average_steps' not found
 ```
 
 ## Imputing missing values
@@ -241,30 +242,27 @@ Make a histogram of the total number of steps taken each day and Calculate and r
 
 ```r
 total_steps_adj <- activity_imputed %>% group_by(date) %>% summarize(steps = sum(steps, na.rm= TRUE))
+```
+
+```
+## Error in summarize(., steps = sum(steps, na.rm = TRUE)): argument "by" is missing, with no default
+```
+
+```r
 head(total_steps_adj, n= 10)
 ```
 
 ```
-## # A tibble: 10 × 2
-##          date    steps
-##        <date>    <dbl>
-## 1  2012-10-01 10766.19
-## 2  2012-10-02   126.00
-## 3  2012-10-03 11352.00
-## 4  2012-10-04 12116.00
-## 5  2012-10-05 13294.00
-## 6  2012-10-06 15420.00
-## 7  2012-10-07 11015.00
-## 8  2012-10-08 10766.19
-## 9  2012-10-09 12811.00
-## 10 2012-10-10  9900.00
+## Error in head(total_steps_adj, n = 10): object 'total_steps_adj' not found
 ```
 
 ```r
 hist(total_steps_adj$steps, breaks=50, main= "Total Number of Steps Taken Each Day (Imputed Data)", xlab= "Total Steps per Day", ylab= "Number of Days", col= "red")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+```
+## Error in hist(total_steps_adj$steps, breaks = 50, main = "Total Number of Steps Taken Each Day (Imputed Data)", : object 'total_steps_adj' not found
+```
 
 #### Calculate the mean and median of the total number of steps taken each day
 
@@ -275,7 +273,7 @@ mean(total_steps_adj$steps)
 ```
 
 ```
-## [1] 10766.19
+## Error in mean(total_steps_adj$steps): object 'total_steps_adj' not found
 ```
 
 The median of the total number of steps taken per day using imputed data is
@@ -285,7 +283,7 @@ median(total_steps_adj$steps)
 ```
 
 ```
-## [1] 10766.19
+## Error in median(total_steps_adj$steps): object 'total_steps_adj' not found
 ```
 
 These values are slightly different than the calculated mean and median from the data with NAs.The histogram of the data becomes more symmetrical and loses its skewed shape and more closely represents a normal bell curve with both the mean and the median being the same value. The total number of daily steps increases as there are now values replacing the NAs. 
@@ -328,39 +326,26 @@ Make a panel plot containing a time series plot of the 5-minute interval (x-axis
 
 ```r
 average_steps_adj <- activity_imputed %>% group_by(interval, DayofWeek) %>% summarize(average_steps = mean(steps, na.rm= TRUE))
+```
+
+```
+## Error in summarize(., average_steps = mean(steps, na.rm = TRUE)): argument "by" is missing, with no default
+```
+
+```r
 head(average_steps_adj)
 ```
 
 ```
-## Source: local data frame [6 x 3]
-## Groups: interval [3]
-## 
-##   interval DayofWeek average_steps
-##      <int>    <fctr>         <dbl>
-## 1        0   weekday    2.25115304
-## 2        0   weekend    0.21462264
-## 3        5   weekday    0.44528302
-## 4        5   weekend    0.04245283
-## 5       10   weekday    0.17316562
-## 6       10   weekend    0.01650943
+## Error in head(average_steps_adj): object 'average_steps_adj' not found
 ```
 
 ```r
 with(average_steps_adj, xyplot(average_steps ~ interval | DayofWeek, type="l", lwd= 1, layout= c(1, 2), col= "red", main= "Average Number of Steps Taken By 5 Minute Interval", ylab="Average Number of Steps Taken", xlab= "5 Minute Interval"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
-
-
-
-
-
-
-
-
-
-
-
-
+```
+## Error in with(average_steps_adj, xyplot(average_steps ~ interval | DayofWeek, : object 'average_steps_adj' not found
+```
 
 
